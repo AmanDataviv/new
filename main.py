@@ -15,7 +15,7 @@ app.include_router(book_router.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello Demo App"}
 
 @app.on_event("startup")
 async def startup_event():
