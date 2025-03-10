@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import get_db
 from services.book_service import BookService
-from schemas.book import BookCreate, Book  # Import Pydantic schemas
+from schemas.book import BookCreate, Book
 
 router = APIRouter(
     prefix="/books",

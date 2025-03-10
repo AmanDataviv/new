@@ -2,8 +2,8 @@ from fastapi import FastAPI, Depends
 from database import engine, Base, get_db
 from routers import author_router, book_router
 import models
-from schemas.author import AuthorCreate  # Import for the test
-from services.author_service import AuthorService # Import for test
+from schemas.author import AuthorCreate 
+from services.author_service import AuthorService
 
 
 app = FastAPI()
@@ -25,7 +25,7 @@ async def startup_event():
         created_author = AuthorService.create_author(db, test_author)
         print(f"Test Author created: {created_author}")
 
-        # Retrieve the author and check
+        
         retrieved_author = AuthorService.get_author_by_id(db, created_author.id)
         assert retrieved_author is not None
         assert retrieved_author.author_name == "Test Author"
