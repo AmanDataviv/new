@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+annotated-types
+anyio
+click
+idna
+starlette
+typing_extensions
+sniffio
+pydantic_core
+psycopg2-binary
+sqlalchemy
+sqlalchemy_utils

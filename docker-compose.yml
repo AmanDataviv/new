@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: pgdb
+    environment:
+      POSTGRES_PASSWORD: db_pswrd
+      POSTGRES_USER: postgres
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - "C:/Users/viv1/Desktop/test/sql/data:/var/lib/postgresql/data"
+
+  server:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:db_pswrd@db:5432/mydatabase
+    ports:
+      - "8001:8000"  
+    depends_on:
+      - db  
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8000:80"
+    depends_on:
+      - server
+    volumes:
+      - .\nginx\nginx.conf:/etc/nginx/conf.d/default.conf
+    

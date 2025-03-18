@@ -23,3 +23,9 @@ def get_book(book_id: int, db: Session = Depends(get_db)):
     if book is None:
         raise HTTPException(status_code=404, detail="Book not found")
     return book
+
+@router.get("/", response_model=Book)
+def get_book_by_author(author_id : int , db : Session = Depends(get_db)):
+    books = BookService.get_book_by_author_id(db,author_id)
+
+    return books

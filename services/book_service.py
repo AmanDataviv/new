@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from models.book import Book as BookModel
 from schemas.book import BookCreate
-
+from crud.book_crud import create_book
 class BookService:
     @staticmethod
     def create_book(db: Session, book: BookCreate):
